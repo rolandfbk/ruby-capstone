@@ -1,12 +1,14 @@
+require 'book_app'
+
 class App
-  def run
+  def run book_app
     puts 'Welcome To The Catalog of My Things!'
     puts
     puts
-    options
+    options book_app
   end
 
-  def options
+  def options book_app
     puts 'Please choose an option by entering a number'
     puts '1 - List all books'
     puts '2 - List all labels'
@@ -20,6 +22,36 @@ class App
     puts '10 - Exit'
 
     choice = gets.chomp
-    # menu(choice)
+    menu choice, book_app
+  end
+
+  def menu choice, book_app
+    case choice
+    when '1'
+      book_app.list_all_books
+      message_menu myapp
+    when '2'
+      book_app.list_all_labels
+      options book_app
+    when '3'
+      puts 'In construction'
+    when '4'
+      puts 'In construction'
+    when '5'
+      puts 'In construction'
+    when '6'
+      puts 'In construction'
+    when '7'
+      book_app.add_book
+      options book_app
+    when '8'
+      puts 'In construction'
+    when '9'
+      puts 'In construction'
+    when '10'
+      puts 'Thank you for using the School Library App!'
+    else
+      puts 'Please enter a number between 1 and 10'
+    end
   end
 end
