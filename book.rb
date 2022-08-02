@@ -10,6 +10,6 @@ class Book < Item
   private
 
   def can_be_achived?
-    Time.now.year - @publish_date.year > 10 ? true : false
+    Time.now.year - @publish_date.year > 10 || @cover_state == 'bad'
   end
 end
