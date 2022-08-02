@@ -3,6 +3,7 @@ require './label'
 require './genre'
 require './author'
 require './source'
+require './data/data_book'
 
 class Bookapp
   def initialize
@@ -67,5 +68,9 @@ class Bookapp
     label.add_item(mybook)
 
     save_book(book_publisher, book_cover_state, book_genre, book_author_first_name, book_author_last_name, book_source, book_label_title, book_label_color, book_publish_date)
+  end
+
+  def load_preserve_data
+    load_books_and_labels @all_books, @all_labels
   end
 end
