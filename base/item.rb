@@ -32,6 +32,6 @@ class Item
   private
 
   def can_be_achived?
-    Time.now.year - @publish_date.year > 10 ? true : false
+    Time.now.year - @publish_date.year > 10
   end
 end
