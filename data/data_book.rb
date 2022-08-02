@@ -5,6 +5,9 @@ require './genre'
 require './author'
 require './source'
 
+# rubocop:disable Metrics/ParameterLists
+# rubocop:disable Metrics/MethodLength
+
 def load_books(mybook, mylabel)
   if File.exist?('./data/books.json')
     file = File.open('./data/books.json')
@@ -21,7 +24,8 @@ def load_books(mybook, mylabel)
         source = Source.new(book['book_source'])
         label = Label.new(book['book_label_title'], book['book_label_color'])
 
-        mybook << Book.new(book['book_publisher'], book['book_cover_state'], genre, author, source, label, book['book_publish_date'])
+        mybook << Book.new(book['book_publisher'], book['book_cover_state'], genre, author, source, label,
+                           book['book_publish_date'])
         mylabel << label
       end
     end
@@ -32,7 +36,8 @@ def load_books(mybook, mylabel)
   end
 end
 
-def save_book(book_publisher, book_cover_state, book_genre, book_author_first_name, book_author_last_name, book_source, book_label_title, book_label_color, book_publish_date)
+def save_book(book_publisher, book_cover_state, book_genre, book_author_first_name, book_author_last_name, book_source,
+              book_label_title, book_label_color, book_publish_date)
   obj = {
     book_publisher: book_publisher,
     book_cover_state: book_cover_state,
@@ -62,3 +67,6 @@ def save_book(book_publisher, book_cover_state, book_genre, book_author_first_na
     myfile.close
   end
 end
+
+# rubocop:enable Metrics/ParameterLists
+# rubocop:enable Metrics/MethodLength

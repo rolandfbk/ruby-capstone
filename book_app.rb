@@ -5,6 +5,9 @@ require './author'
 require './source'
 require './data/data_book'
 
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Layout/LineLength
+
 class Bookapp
   def initialize
     @all_books = []
@@ -14,7 +17,9 @@ class Bookapp
   def list_all_books
     puts 'There are no books to show! Please add a book.' if @all_books.empty?
 
-    @all_books.each { |book| puts "ID: #{book.id}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}, Genre: #{book.genre.name}, Author: #{book.author.first_name} #{book.author.last_name}, Source: #{book.source.name}, Label: #{book.label.title}, Publish Date: #{book.publish_date}, Archived: #{book.archived}" }
+    @all_books.each do |book|
+      puts "ID: #{book.id}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}, Genre: #{book.genre.name}, Author: #{book.author.first_name} #{book.author.last_name}, Source: #{book.source.name}, Label: #{book.label.title}, Publish Date: #{book.publish_date}, Archived: #{book.archived}"
+    end
     puts
     puts
   end
@@ -67,10 +72,14 @@ class Bookapp
 
     label.add_item(mybook)
 
-    save_book(book_publisher, book_cover_state, book_genre, book_author_first_name, book_author_last_name, book_source, book_label_title, book_label_color, book_publish_date)
+    save_book(book_publisher, book_cover_state, book_genre, book_author_first_name, book_author_last_name, book_source,
+              book_label_title, book_label_color, book_publish_date)
   end
 
   def load_preserve_data
     load_books_and_labels @all_books, @all_labels
   end
 end
+
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Layout/LineLength

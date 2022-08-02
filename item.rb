@@ -1,5 +1,6 @@
 class Item
   attr_accessor :my_label, :archived
+
   def initialize(genre, author, source, label, publish_date)
     @id = Random.rand(1..1000)
     @genre = genre
@@ -17,6 +18,6 @@ class Item
   private
 
   def can_be_achived?
-    Time.now.year - @publish_date.year > 10 ? true : false
+    Time.now.year - @publish_date.year > 10
   end
 end

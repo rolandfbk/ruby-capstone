@@ -1,6 +1,8 @@
 require './item'
 require 'date'
 
+# rubocop:disable Metrics/ParameterLists
+
 class Book < Item
   attr_accessor :publisher, :cover_state
 
@@ -16,3 +18,5 @@ class Book < Item
     Time.now.year - Date.parse(@publish_date).year > 10 || @cover_state == 'bad'
   end
 end
+
+# rubocop:enable Metrics/ParameterLists
