@@ -1,5 +1,7 @@
 require './app'
 
+# rubocop:disable Metrics
+
 def main
   app = App.new
   app.run
@@ -45,3 +47,5 @@ def option(input)
 end
 
 main
+
+# rubocop:enable Metrics

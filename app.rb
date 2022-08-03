@@ -2,6 +2,8 @@ require_relative 'base/book'
 require_relative 'base/label'
 require_relative 'data/data_book'
 
+# rubocop:disable Metrics
+
 class App
   def initialize
     @genres = []
@@ -95,3 +97,5 @@ class App
     load_books_and_labels @all_books, @all_labels
   end
 end
+
+# rubocop:enable Metrics
