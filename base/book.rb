@@ -1,13 +1,11 @@
-require './item'
+require_relative 'item'
 require 'date'
-
-# rubocop:disable Metrics/ParameterLists
 
 class Book < Item
   attr_accessor :publisher, :cover_state
 
-  def initialize(publisher, cover_state, genre, author, source, label, publish_date)
-    super(genre, author, source, label, publish_date)
+  def initialize(publisher, cover_state, publish_date)
+    super(publish_date)
     @publisher = publisher
     @cover_state = cover_state
   end
@@ -18,5 +16,3 @@ class Book < Item
     Time.now.year - Date.parse(@publish_date).year > 10 || @cover_state == 'bad'
   end
 end
-
-# rubocop:enable Metrics/ParameterLists

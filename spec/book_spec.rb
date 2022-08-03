@@ -1,34 +1,11 @@
-require './book'
-require './label'
-
-class Genre
-  def initialize
-    @genre = ''
-  end
-end
-
-class Author
-  def initialize
-    @author = ''
-  end
-end
-
-class Source
-  def initialize
-    @source = ''
-  end
-end
+require './base/book'
 
 describe Book do
   before :each do
-    genre = Genre.new
-    author = Author.new
-    source = Source.new
-    label = Label.new 'True Stories', 'Blue'
-    @book_one = Book.new 'Roland', 'bad', genre, author, source, label, '12-07-2000'
-    @book_two = Book.new 'Gabrielle', 'good', genre, author, source, label, '12-07-2000'
-    @book_three = Book.new 'Joelle', 'good', genre, author, source, label, '12-07-2019'
-    @book_four = Book.new 'Publisher', 'bad', genre, author, source, label, '12-07-2019'
+    @book_one = Book.new 'Roland', 'bad', '12-07-2000'
+    @book_two = Book.new 'Gabrielle', 'good', '12-07-2000'
+    @book_three = Book.new 'Joelle', 'good', '12-07-2019'
+    @book_four = Book.new 'Publisher', 'bad', '12-07-2019'
   end
 
   it 'The can_be_achived? method returns true if difference between current date

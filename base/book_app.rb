@@ -1,12 +1,6 @@
 require './book'
 require './label'
-require './genre'
-require './author'
-require './source'
 require './data/data_book'
-
-# rubocop:disable Metrics/MethodLength
-# rubocop:disable Layout/LineLength
 
 class Bookapp
   def initialize
@@ -18,7 +12,7 @@ class Bookapp
     puts 'There are no books to show! Please add a book.' if @all_books.empty?
 
     @all_books.each do |book|
-      puts "ID: #{book.id}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}, Genre: #{book.genre.name}, Author: #{book.author.first_name} #{book.author.last_name}, Source: #{book.source.name}, Label: #{book.label.title}, Publish Date: #{book.publish_date}, Archived: #{book.archived}"
+      puts "ID: #{book.id}, Publisher: #{book.publisher}, Cover State: #{book.cover_state},  Label: #{book.label.title} #{book.label.color}, Publish Date: #{book.publish_date}, Archived: #{book.archived}"
     end
     puts
     puts
@@ -39,18 +33,6 @@ class Bookapp
     print 'Cover State: '
     book_cover_state = gets.chomp
 
-    print 'Genre: '
-    book_genre = gets.chomp
-
-    print 'Author First Name: '
-    book_author_first_name = gets.chomp
-
-    print 'Author Last Name: '
-    book_author_last_name = gets.chomp
-
-    print 'Source: '
-    book_source = gets.chomp
-
     print 'Label Title: '
     book_label_title = gets.chomp
 
@@ -60,26 +42,19 @@ class Bookapp
     print 'Publish Date: '
     book_publish_date = gets.chomp
 
-    genre = Genre.new book_genre
-    author = Author.new book_author_first_name, book_author_last_name
-    source = Source.new book_source
     label = Label.new book_label_title, book_label_color
 
-    mybook = Book.new book_publisher, book_cover_state, genre, author, source, label, book_publish_date
+    mybook = Book.new book_publisher, book_cover_state, book_publish_date
 
     @all_books << mybook
     @all_labels << label
 
     label.add_item(mybook)
 
-    save_book(book_publisher, book_cover_state, book_genre, book_author_first_name, book_author_last_name, book_source,
-              book_label_title, book_label_color, book_publish_date)
+    save_book(book_publisher, book_cover_state, book_label_title, book_label_color, book_publish_date)
   end
 
   def load_preserve_data
     load_books_and_labels @all_books, @all_labels
   end
 end
-
-# rubocop:enable Metrics/MethodLength
-# rubocop:enable Layout/LineLength
