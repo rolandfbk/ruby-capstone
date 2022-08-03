@@ -1,4 +1,9 @@
 class App
+  def initialize
+    @genres = []
+    @albums = []
+  end
+
   def run
     puts 'Welcome To The Catalog of My Things!'
     puts
@@ -7,7 +12,6 @@ class App
       input = gets.chomp
       if input == '10'
         puts 'Have good day :)'
-        save_data
         break
       end
       option(input)
