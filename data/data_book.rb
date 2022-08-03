@@ -1,8 +1,8 @@
 require 'json'
-require './book'
-require './label'
+require_relative '../base/book'
+require_relative '../base/label'
 
-def load_books(mybook, mylabel)
+def load_books_and_labels(mybook, mylabel)
   if File.exist?('./data/books.json')
     file = File.open('./data/books.json')
 
@@ -14,9 +14,11 @@ def load_books(mybook, mylabel)
 
       books.each do |book|
         label = Label.new(book['book_label_title'], book['book_label_color'])
-
-        mybook << Book.new(book['book_publisher'], book['book_cover_state'], book['book_publish_date'])
+        book = Book.new(book['book_publisher'], book['book_cover_state'], book['book_publish_date'])
+        mybook << book
         mylabel << label
+
+        label.add_item(book)
       end
     end
     file.close

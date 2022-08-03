@@ -12,6 +12,7 @@ CREATE TABLE Genre(
   id SERIAL PRIMARY KEY,
   name VARCHAR(250)
 );
+
 CREATE TABLE books (
     id           INT GENERATED ALWAYS AS IDENTITY,
     publisher    VARCHAR(255),

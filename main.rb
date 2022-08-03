@@ -1,5 +1,7 @@
 require './app'
 
+# rubocop:disable Metrics
+
 def main
   app = App.new
   app.run
@@ -29,19 +31,21 @@ def option(input)
     list_music
   when '4'
     list_genres
-    # when '5'
-    #   list_games
-    # when '6'
-    #   list_authors
-    # when '7'
-    #   create_book
-    # when '8'
-    #   create_album
-    # when '9'
-    #   create_game
-    # else
-    puts "I don't understand...."
+  when '5'
+    list_games
+  when '6'
+    list_authors
+  when '7'
+    create_book
+  when '8'
+    create_album
+  when '9'
+    create_game
+  else
+    puts "I don't understand..."
   end
 end
 
 main
+
+# rubocop:enable Metrics
