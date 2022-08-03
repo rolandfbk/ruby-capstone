@@ -35,20 +35,20 @@ def save_book(book_publisher, book_cover_state, book_label_title, book_label_col
     book_publish_date: book_publish_date
   }
 
-  if File.exist?('./data/books.json')
-    file = File.open('./data/books.json')
+  return unless File.exist?('./data/books.json')
 
-    if file.size.zero?
-      book = [obj]
-    else
-      book = JSON.parse(File.read('./data/books.json'))
-      book << obj
-    end
+  file = File.open('./data/books.json')
 
-    file.close
-
-    myfile = File.open('./data/books.json', 'w')
-    myfile.write(JSON.pretty_generate(book))
-    myfile.close
+  if file.size.zero?
+    book = [obj]
+  else
+    book = JSON.parse(File.read('./data/books.json'))
+    book << obj
   end
+
+  file.close
+
+  myfile = File.open('./data/books.json', 'w')
+  myfile.write(JSON.pretty_generate(book))
+  myfile.close
 end

@@ -12,7 +12,9 @@ class Bookapp
     puts 'There are no books to show! Please add a book.' if @all_books.empty?
 
     @all_books.each do |book|
-      puts "ID: #{book.id}, Publisher: #{book.publisher}, Cover State: #{book.cover_state},  Label: #{book.label.title} #{book.label.color}, Publish Date: #{book.publish_date}, Archived: #{book.archived}"
+      puts "ID: #{book.id}, Publisher: #{book.publisher}, Cover State: #{book.cover_state},
+      Label: #{book.label.title} #{book.label.color},
+      Publish Date: #{book.publish_date}, Archived: #{book.archived}"
     end
     puts
     puts
