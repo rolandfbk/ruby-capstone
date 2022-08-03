@@ -1,3 +1,5 @@
+require './app'
+
 def main
   app = App.new
   app.run
@@ -15,6 +17,31 @@ def list_options
   puts '8 - Create a music'
   puts '9 - Create a game'
   puts '10 - Exit'
+end
+
+def option(input)
+  case input
+  when '1'
+    list_books
+  when '2'
+    list_labels
+  when '3'
+    list_music
+  when '4'
+    list_genres
+    # when '5'
+    #   list_games
+    # when '6'
+    #   list_authors
+    # when '7'
+    #   create_book
+    # when '8'
+    #   create_album
+    # when '9'
+    #   create_game
+    # else
+    puts "I don't understand..."
+  end
 end
 
 main
