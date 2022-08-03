@@ -40,7 +40,7 @@ def option(input)
     # when '9'
     #   create_game
     # else
-    puts "I don't understand..."
+    puts "I don't understand...."
   end
 end
 

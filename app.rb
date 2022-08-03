@@ -11,7 +11,7 @@ class App
     until list_options
       input = gets.chomp
       if input == '10'
-        puts 'Have good day :)'
+        puts 'Have a good day :)'
         break
       end
       option(input)
