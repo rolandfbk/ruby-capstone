@@ -96,7 +96,7 @@ class App
     print 'Label Color: '
     book_label_color = gets.chomp
 
-    print 'Publish Date: '
+    print 'Publish Date (DD-MM-YYYY): '
     book_publish_date = gets.chomp
 
     puts
