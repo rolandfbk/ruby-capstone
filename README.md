@@ -25,12 +25,11 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@rolandfbk](https://twitter.com/rolandfbk)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/roland-ossisa-yuma)
 
-👤 **Miki**
+👤 **Michael**
 
-- GitHub: [add_username](https://github.com/)
-- Twitter: [add_username](https://twitter.com/)
-- LinkedIn: [LinkedIn](https://linkedin.com/)
-
+- GitHub: [@Mikelobi](https://github.com/Mikelobi)
+- Twitter: [@Mikelobi](https://twitter.com/omulum)
+- LinkedIn: [@Mikelobi](https://www.linkedin.com/in/ugochukwu-omulu/)
 
 ## 🤝 Contributing
 
