@@ -124,20 +124,20 @@ class App
     date = Date.parse(gets.chomp)
 
     puts 'Genre: '
-    genre = gets.chomp
+    genre_name = gets.chomp
 
     puts 'On Spotify (y/n): '
     on_spotify = gets.chomp
 
     album = MusicAlbum.new(date, name, on_spotify)
-    genre = Genre.new(genre)
+    genre = Genre.new(genre_name)
 
     @albums << album
     @genres << genre
 
     genre.add_item(album)
 
-    save_album(date, name, genre, on_spotify)
+    save_album(date, name, genre_name, on_spotify)
 
     puts "#{name} has been added to the list."
   end
