@@ -1,22 +1,22 @@
 require_relative 'base/book'
 require_relative 'base/label'
 require_relative 'data/data_book'
+require_relative 'data/data_album'
+require_relative 'base/music_album'
+require_relative 'base/genre'
 require_relative 'base/game'
 require_relative 'base/author'
 require_relative 'data/game_data'
+require 'Date'
 
 # rubocop:disable Metrics
 
 class App
-  attr_reader :authors, :games
-
   def initialize
     @genres = []
     @albums = []
     @all_books = []
     @all_labels = []
-    @games = []
-    @authors = []
   end
 
   def run
@@ -45,13 +45,22 @@ class App
       puts "Cover State: #{book.cover_state}"
       puts "Label: \'#{book.label.title}\', \'#{book.label.color}\'"
       puts "Publish Date: #{book.publish_date}"
-      puts "Archived: #{book.archived}"
       puts '----------------'
       puts
     end
     puts
     puts
     sleep 0.75
+  end
+
+  def list_albums
+    puts
+    puts 'There are no albums to list. Select (8) to create one.' if @albums.empty?
+
+    @albums.each do |album|
+      puts "ID: #{album.id}: Name: #{album.name} Genre: #{album.genre.name} On_Spotify: #{album.on_spotify}"
+      puts
+    end
   end
 
   def list_labels
@@ -62,6 +71,15 @@ class App
     puts
     puts
     sleep 0.75
+  end
+
+  def list_genres
+    puts
+    puts 'There are no genres! You can create one by adding a genre.' if @genres.empty?
+
+    @genres.each_with_index { |genre, index| puts "#{index}: Name: #{genre.name}" }
+    puts
+    puts
   end
 
   def create_book
@@ -100,6 +118,53 @@ class App
     sleep 0.75
   end
 
+  def create_album
+    puts 'Name: '
+    name = gets.chomp
+
+    puts 'Publish Date (DD-MM-YYYY): '
+    date = Date.parse(gets.chomp)
+
+    puts 'Genre: '
+    genre_name = gets.chomp
+
+    puts 'On Spotify (y/n): '
+    on_spotify = gets.chomp
+
+    album = MusicAlbum.new(date, name, on_spotify)
+    genre = Genre.new(genre_name)
+
+    @albums << album
+    @genres << genre
+
+    genre.add_item(album)
+
+    save_album(date, name, genre_name, on_spotify)
+
+    puts "#{name} has been added to the list."
+  end
+  
+  def create_game
+    print 'Is game multiplayer no(n) or yes(y) -> (Y/N):'
+    multiplayer = gets.chomp.downcase == 'y' ? 'yes' : 'no'
+    print 'Enter published date, format -> YYYY-MM-DD:'
+    publish_date = gets.chomp
+    print 'Enter date last played, format -> YYYY-MM-DD:'
+    last_played = gets.chomp
+    print 'Enter the first name:'
+    author_first = gets.chomp
+    print 'Enter the last name:'
+    author_last = gets.chomp
+    new_author = Author.new(author_first, author_last)
+    game = Game.new(multiplayer, last_played, publish_date)
+    # new_game.move_to_archive
+    @games << game
+    @authors << new_author
+    new_author.add_items(game)
+    save_game(game)
+    puts 'The Game has been created successfully ✅'
+  end
+  
   def list_games
     if @games.empty?
       puts 'Games Catalog is empty! Choose (12) to add a game.'
@@ -123,29 +188,9 @@ class App
       end
     end
   end
-
-  def create_game
-    print 'Is game multiplayer no(n) or yes(y) -> (Y/N):'
-    multiplayer = gets.chomp.downcase == 'y' ? 'yes' : 'no'
-    print 'Enter published date, format -> YYYY-MM-DD:'
-    publish_date = gets.chomp
-    print 'Enter date last played, format -> YYYY-MM-DD:'
-    last_played = gets.chomp
-    print 'Enter the first name:'
-    author_first = gets.chomp
-    print 'Enter the last name:'
-    author_last = gets.chomp
-    new_author = Author.new(author_first, author_last)
-    game = Game.new(multiplayer, last_played, publish_date)
-    # new_game.move_to_archive
-    @games << game
-    @authors << new_author
-    new_author.add_items(game)
-    save_game(game)
-    puts 'The Game has been created successfully ✅'
-  end
-
+  
   def load_preserve_data
+    load_album_genre @albums, @genres
     load_books_and_labels @all_books, @all_labels
     load_manager @games, @authors
   end
