@@ -114,7 +114,7 @@ class App
 
     save_book(book_publisher, book_cover_state, book_label_title, book_label_color, book_publish_date)
 
-    puts 'Book created successfully'
+    puts 'Book created successfully.✅'
     puts
     puts
     sleep 0.75
@@ -143,7 +143,7 @@ class App
 
     save_album(date, name, genre_name, on_spotify)
 
-    puts "#{name} has been added to the list."
+    puts "#{name} has been added to the list. ✅"
   end
 
   def create_game
@@ -159,7 +159,6 @@ class App
     author_last = gets.chomp
     new_author = Author.new(author_first, author_last)
     game = Game.new(multiplayer, last_played, publish_date)
-    # new_game.move_to_archive
     @games << game
     @authors << new_author
     new_author.add_items(game)
@@ -172,11 +171,12 @@ class App
       puts 'Games Catalog is empty! Choose (12) to add a game.'
     else
       @games.each do |game|
-        puts "Multiplayer: #{game.multiplayer}
-        last played at: #{game.last_played_at}
-        published date: #{game.publish_date}
-        author_firstname => #{game.author.first_name}
-        author_lastname => #{game.author.last_name}\n"
+        puts "Multiplayer: #{game.multiplayer}"
+        puts "last played at: #{game.last_played_at}"
+        puts "published date: #{game.publish_date}"
+        puts "author_firstname => #{game.author.first_name}"
+        puts "author_lastname => #{game.author.last_name}\n"
+        puts
       end
     end
   end
