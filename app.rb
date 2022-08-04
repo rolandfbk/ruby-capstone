@@ -1,8 +1,9 @@
 require_relative 'base/book'
 require_relative 'base/label'
 require_relative 'data/data_book'
-require './model/author'
-require './model/game'
+require_relative 'base/game'
+require_relative 'base/author'
+require_relative 'data/game_data'
 
 # rubocop:disable Metrics
 
@@ -14,8 +15,8 @@ class App
     @albums = []
     @all_books = []
     @all_labels = []
-    @authors = []
     @games = []
+    @authors = []
   end
 
   def run
@@ -99,12 +100,49 @@ class App
     sleep 0.75
   end
 
-  def add_author(item)
-    @author.add_item(item)
+  def list_games
+    if @games.empty?
+      puts 'Games Catalog is empty! Choose (12) to add a game.'
+    else
+      @games.each do |game|
+        puts "Multiplayer: #{game.multiplayer}, last played at: #{game.last_played_at},
+        published date: #{game.publish_date}, 'author' => game.author.first_name\n"
+      end
+    end
   end
-  
+
+  def list_authors
+    if @authors.empty?
+      puts 'Catalog is empty! Choose (13) to add an author.'
+    else
+      @authors.each { |author| puts "First name: #{author.first_name}, Last name: #{author.last_name}" }
+    end
+  end
+
+  def create_game
+    print 'Is game multiplayer no(n) or yes(y) -> (Y/N):'
+    multiplayer = gets.chomp.downcase == 'y' ? 'yes' : 'no'
+    print 'Enter published date, format -> YYYY-MM-DD:'
+    publish_date = gets.chomp
+    print 'Enter date last played, format -> YYYY-MM-DD:'
+    last_played = gets.chomp
+    print 'Enter the first name:'
+    author_first = gets.chomp
+    print 'Enter the last name:'
+    author_last = gets.chomp
+    new_author = Author.new(author_first, author_last)
+    game = Game.new(multiplayer, last_played, publish_date)
+    # new_game.move_to_archive
+    @games << game
+    @authors << new_author
+    new_author.add_items(game)
+    save_game(game)
+    puts 'The Game has been created successfully ✅'
+  end
+
   def load_preserve_data
     load_books_and_labels @all_books, @all_labels
+    load_manager @games, @authors
   end
 end
 
