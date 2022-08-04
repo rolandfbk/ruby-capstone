@@ -111,6 +111,8 @@ class App
 
     @albums << album
     @genres << genre
+
+    puts "#{name} has been added to the list."
   end
 
   def load_preserve_data
