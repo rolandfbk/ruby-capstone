@@ -105,8 +105,11 @@ class App
       puts 'Games Catalog is empty! Choose (12) to add a game.'
     else
       @games.each do |game|
-        puts "Multiplayer: #{game.multiplayer}, last played at: #{game.last_played_at},
-        published date: #{game.publish_date}, 'author' => game.author.first_name\n"
+        puts "Multiplayer: #{game.multiplayer} 
+        last played at: #{game.last_played_at}
+        published date: #{game.publish_date} 
+        author_firstname => #{game.author.first_name}
+        author_lastname => #{game.author.last_name}\n"
       end
     end
   end
@@ -115,7 +118,7 @@ class App
     if @authors.empty?
       puts 'Catalog is empty! Choose (13) to add an author.'
     else
-      @authors.each { |author| puts "First name: #{author.first_name}, Last name: #{author.last_name}" }
+      @authors.each { |author| puts "ID: #{author.id}", "First name: #{author.first_name}, Last name: #{author.last_name}" }
     end
   end
 
