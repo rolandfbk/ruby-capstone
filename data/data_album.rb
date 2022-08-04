@@ -1,7 +1,7 @@
 require 'json'
 require_relative '../base/genre'
 require_relative '../base/music_album'
-require 'Date'
+require 'date'
 
 def load_album_genre(myalbum, mygenre)
   if File.exist?('./data/albums.json')
@@ -44,7 +44,7 @@ def save_album(date, name, genre, on_spotify)
   if file.size.zero?
     album = [obj]
   else
-    album = JSON.parse(File.read('./data/books.json'))
+    album = JSON.parse(File.read('./data/albums.json'))
     album << obj
   end
 
