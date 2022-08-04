@@ -27,3 +27,6 @@ def load_album_genre
     genres = []
   end
 end
+
+def save_album()
+end

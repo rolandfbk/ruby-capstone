@@ -55,7 +55,7 @@ class App
     puts 'There are no albums to list. Select (8) to create one.' if @albums.empty?
 
     @albums.each do |album|
-      puts "#{album.id}: #{album.name} #{album.genre.name} #{album.on_spotify}"
+      puts "ID: #{album.id}: Name: #{album.name} Genre: #{album.genre.name} On_Spotify: #{album.on_spotify}"
       puts
     end
   end
@@ -74,7 +74,7 @@ class App
     puts
     puts 'There are no genres! You can create one by adding a genre.' if @genres.empty?
 
-    @genres.each_with_index { |genre, index| puts "#{index}: #{genre.name}" }
+    @genres.each_with_index { |genre, index| puts "#{index}: Name: #{genre.name}" }
     puts
     puts
   end
@@ -125,7 +125,10 @@ class App
     puts 'Genre: '
     genre = gets.chomp
 
-    album = MusicAlbum.new(date, name)
+    puts 'On Spotify (y/n): '
+    on_spotify = gets.chomp
+
+    album = MusicAlbum.new(date, name, on_spotify)
     genre = Genre.new(genre)
 
     @albums << album
