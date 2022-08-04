@@ -50,6 +50,16 @@ class App
     sleep 0.75
   end
 
+  def list_albums
+    puts
+    puts 'There are no albums to list. Select (8) to create one.' if @albums.empty?
+
+    @albums.each do |album|
+      puts "#{album.id}: #{album.name} #{album.genre.name} #{album.on_spotify}"
+      puts
+    end
+  end
+
   def list_labels
     puts
     puts 'There are no labels to show! Please add a label.' if @all_labels.empty?
@@ -120,6 +130,8 @@ class App
 
     @albums << album
     @genres << genre
+
+    genre.add_item(album)
 
     puts "#{name} has been added to the list."
   end
