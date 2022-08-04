@@ -21,9 +21,9 @@ To get a local copy up and running follow these simple example steps.
 
 👤 **Roland**
 
-- GitHub: [add_username](https://github.com/)
-- Twitter: [add_username](https://twitter.com/)
-- LinkedIn: [LinkedIn](https://linkedin.com)
+- GitHub: [@rolandfbk](https://github.com/rolandfbk)
+- Twitter: [@rolandfbk](https://twitter.com/rolandfbk)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/roland-ossisa-yuma)
 
 👤 **Miki**
 
