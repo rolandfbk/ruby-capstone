@@ -74,7 +74,7 @@ class App
     puts
     puts 'There are no genres! You can create one by adding a genre.' if @genres.empty?
 
-    @genres.each_with_index { |genre, index| puts "#{index}: #{genre.name}"}
+    @genres.each_with_index { |genre, index| puts "#{index}: #{genre.name}" }
     puts
     puts
   end
