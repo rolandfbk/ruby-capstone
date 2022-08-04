@@ -1,15 +1,21 @@
 require_relative 'base/book'
 require_relative 'base/label'
 require_relative 'data/data_book'
+require './model/author'
+require './model/game'
 
 # rubocop:disable Metrics
 
 class App
+  attr_reader :authors, :games
+
   def initialize
     @genres = []
     @albums = []
     @all_books = []
     @all_labels = []
+    @authors = []
+    @games = []
   end
 
   def run
@@ -93,6 +99,10 @@ class App
     sleep 0.75
   end
 
+  def add_author(item)
+    @author.add_item(item)
+  end
+  
   def load_preserve_data
     load_books_and_labels @all_books, @all_labels
   end
