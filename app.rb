@@ -1,6 +1,10 @@
 require_relative 'base/book'
 require_relative 'base/label'
 require_relative 'data/data_book'
+require_relative 'data/data_album'
+require_relative 'base/music_album'
+require_relative 'base/genre'
+require 'Date'
 
 # rubocop:disable Metrics
 
@@ -47,6 +51,16 @@ class App
     sleep 0.75
   end
 
+  def list_albums
+    puts
+    puts 'There are no albums to list. Select (8) to create one.' if @albums.empty?
+
+    @albums.each do |album|
+      puts "ID: #{album.id}: Name: #{album.name} Genre: #{album.genre.name} On_Spotify: #{album.on_spotify}"
+      puts
+    end
+  end
+
   def list_labels
     puts
     puts 'There are no labels to show! Please add a label.' if @all_labels.empty?
@@ -55,6 +69,15 @@ class App
     puts
     puts
     sleep 0.75
+  end
+
+  def list_genres
+    puts
+    puts 'There are no genres! You can create one by adding a genre.' if @genres.empty?
+
+    @genres.each_with_index { |genre, index| puts "#{index}: Name: #{genre.name}" }
+    puts
+    puts
   end
 
   def create_book
@@ -93,7 +116,34 @@ class App
     sleep 0.75
   end
 
+  def create_album
+    puts 'Name: '
+    name = gets.chomp
+
+    puts 'Publish Date (DD-MM-YYYY): '
+    date = Date.parse(gets.chomp)
+
+    puts 'Genre: '
+    genre_name = gets.chomp
+
+    puts 'On Spotify (y/n): '
+    on_spotify = gets.chomp
+
+    album = MusicAlbum.new(date, name, on_spotify)
+    genre = Genre.new(genre_name)
+
+    @albums << album
+    @genres << genre
+
+    genre.add_item(album)
+
+    save_album(date, name, genre_name, on_spotify)
+
+    puts "#{name} has been added to the list."
+  end
+
   def load_preserve_data
+    load_album_genre @albums, @genres
     load_books_and_labels @all_books, @all_labels
   end
 end

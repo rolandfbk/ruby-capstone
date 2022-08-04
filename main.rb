@@ -16,7 +16,7 @@ def list_options
   puts '5 - List all games'
   puts '6 - List all authors'
   puts '7 - Create a book'
-  puts '8 - Create a music'
+  puts '8 - Create an album'
   puts '9 - Create a game'
   puts '10 - Exit'
 end
@@ -28,7 +28,7 @@ def option(input)
   when '2'
     list_labels
   when '3'
-    list_music
+    list_albums
   when '4'
     list_genres
   when '5'
