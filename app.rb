@@ -1,6 +1,7 @@
 require_relative 'base/book'
 require_relative 'base/label'
 require_relative 'data/data_book'
+require_relative 'data/data_album'
 require_relative 'base/music_album'
 require_relative 'base/genre'
 require 'Date'
@@ -136,11 +137,14 @@ class App
 
     genre.add_item(album)
 
+    save_album(date, name, genre, on_spotify)
+
     puts "#{name} has been added to the list."
   end
 
   def load_preserve_data
     load_books_and_labels @all_books, @all_labels
+    load_album_genre @albums, @genres
   end
 end
 

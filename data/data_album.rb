@@ -3,7 +3,7 @@ require_relative '../base/genre'
 require_relative '../base/music_album'
 require 'Date'
 
-def load_album_genre
+def load_album_genre(albums, genres)
   if File.exist?('./data/albums.json')
     file = File.open('./data/albums.json')
 
