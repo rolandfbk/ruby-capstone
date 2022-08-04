@@ -7,7 +7,7 @@ require_relative 'base/genre'
 require_relative 'base/game'
 require_relative 'base/author'
 require_relative 'data/game_data'
-require 'Date'
+require 'date'
 
 # rubocop:disable Metrics
 
@@ -17,6 +17,8 @@ class App
     @albums = []
     @all_books = []
     @all_labels = []
+    @games = []
+    @authors = []
   end
 
   def run
