@@ -42,7 +42,6 @@ class App
       puts "Cover State: #{book.cover_state}"
       puts "Label: \'#{book.label.title}\', \'#{book.label.color}\'"
       puts "Publish Date: #{book.publish_date}"
-      puts "Archived: #{book.archived}"
       puts '----------------'
       puts
     end
