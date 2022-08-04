@@ -143,7 +143,7 @@ class App
 
     puts "#{name} has been added to the list."
   end
-  
+
   def create_game
     print 'Is game multiplayer no(n) or yes(y) -> (Y/N):'
     multiplayer = gets.chomp.downcase == 'y' ? 'yes' : 'no'
@@ -164,7 +164,7 @@ class App
     save_game(game)
     puts 'The Game has been created successfully ✅'
   end
-  
+
   def list_games
     if @games.empty?
       puts 'Games Catalog is empty! Choose (12) to add a game.'
@@ -188,7 +188,7 @@ class App
       end
     end
   end
-  
+
   def load_preserve_data
     load_album_genre @albums, @genres
     load_books_and_labels @all_books, @all_labels
