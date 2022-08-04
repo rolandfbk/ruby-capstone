@@ -1,6 +1,9 @@
 require_relative 'base/book'
 require_relative 'base/label'
 require_relative 'data/data_book'
+require_relative 'base/music_album'
+require_relative 'base/genre'
+require 'Date'
 
 # rubocop:disable Metrics
 
@@ -91,6 +94,23 @@ class App
     puts
     puts
     sleep 0.75
+  end
+
+  def create_album
+    puts 'Name: '
+    name = gets.chomp
+
+    puts 'Publish Date (DD-MM-YYYY): '
+    date = Date.parse(gets.chomp)
+
+    puts 'Genre: '
+    genre = gets.chomp
+
+    album = MusicAlbum.new(date, name)
+    genre = Genre.new(genre)
+
+    @albums << album
+    @genres << genre
   end
 
   def load_preserve_data
