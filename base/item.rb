@@ -1,14 +1,16 @@
+require 'date'
+
 class Item
   attr_accessor :id, :publish_date, :author, :label, :archived, :genre
 
   def initialize(publish_date)
     @id = Random.rand(1..1000)
     @publish_date = publish_date
-    @archived = nil
+    @archived = false
   end
 
-  def move_to_archived
-    @archived = true if can_be_achived?
+  def move_to_archive
+    @archived = true if can_be_archived?
   end
 
   def add_genre(genre)
@@ -33,7 +35,7 @@ class Item
 
   private
 
-  def can_be_achived?
+  def can_be_archived?
     Time.now.year - @publish_date.year > 10
   end
 end
