@@ -60,6 +60,15 @@ class App
     sleep 0.75
   end
 
+  def list_genres
+    puts
+    puts 'There are no genres! You can create one by adding a genre.' if @genres.empty?
+
+    @genres.each_with_index { |genre, index| puts "#{index}: #{genre.name}"}
+    puts
+    puts
+  end
+
   def create_book
     puts
     print 'Publisher: '
