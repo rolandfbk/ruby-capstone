@@ -20,9 +20,9 @@ def load_album_genre(my_albums, my_genres)
         date = album['published']
         genre = Genre.new(genre_name)
         album = MusicAlbum.new(Date.parse(date), name, spotify)
-
         my_albums << album
         my_genres << genre
+
         genre.add_item(album)
       end
     end

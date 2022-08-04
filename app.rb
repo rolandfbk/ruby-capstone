@@ -143,8 +143,8 @@ class App
   end
 
   def load_preserve_data
-    load_books_and_labels @all_books, @all_labels
     load_album_genre @albums, @genres
+    load_books_and_labels @all_books, @all_labels
   end
 end
 
