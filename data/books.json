@@ -1,0 +1,16 @@
+[
+  {
+    "book_publisher": "Roland",
+    "book_cover_state": "Good",
+    "book_label_title": "Gift",
+    "book_label_color": "Blue",
+    "book_publish_date": "11-07-2000"
+  },
+  {
+    "book_publisher": "Microverse",
+    "book_cover_state": "Michigan",
+    "book_label_title": "Hero",
+    "book_label_color": "Blue",
+    "book_publish_date": "2022-06-21"
+  }
+]
