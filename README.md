@@ -12,6 +12,19 @@ To get a local copy up and running follow these simple example steps.
 - Write `https://github.com/rolandfbk/ruby-capstone`.
 - Go to the repository folder in your command prompt `cd ruby-capstone`.
 
+- Follow these steps to run the app:
+  - run `Ruby main.rb`
+  
+  ### Rspec Tests
+  - Run the following command to install rspec.
+    ```
+     $ gem install rspec
+    ```
+  - Run the following command to run the test:
+    ```
+    $ rspec ./spec/#{filename}_spec.rb
+    ```
+
 ## Authors
 👤 **Jake Felice**
 
